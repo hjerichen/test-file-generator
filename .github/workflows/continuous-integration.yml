@@ -56,12 +56,34 @@ jobs:
 
   psalm:
     name: Psalm
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
+
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Psalm
-        uses: docker://vimeo/psalm-github-actions
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          php-version: 8.1
+          coverage: pcov
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-coverage-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-coverage-composer-
+
+      - name: Install Dependencies
+        run: composer update
+
+      - name: Run Psalm
+        run: vendor/bin/psalm
 
   coverage:
     runs-on: ubuntu-18.04
