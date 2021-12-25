@@ -54,6 +54,15 @@ jobs:
       - name: Run Tests
         run: vendor/bin/phpunit
 
+  psalm:
+    name: Psalm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Psalm
+        uses: docker://vimeo/psalm-github-actions
+
   coverage:
     runs-on: ubuntu-18.04
     name: Code Coverage
