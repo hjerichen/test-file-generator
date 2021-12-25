@@ -1,0 +1,9 @@
+#!/usr/bin/php
+
+<?php
+
+/** @psalm-suppress MissingFile */
+require_once __DIR__ . "/../vendor/autoload.php";
+
+$generator = new HJerichen\TestFileGenerator\TestFileGenerator();
+$generator->execute($argv[1] ?? '');

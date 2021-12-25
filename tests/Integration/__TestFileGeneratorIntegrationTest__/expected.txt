@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+
+namespace HJerichen\TestFileGenerator\Test\Unit\TestFileLocationProvider;
+
+use HJerichen\TestFileGenerator\TestFileLocationProvider\TestFileLocationProviderDefault;
+use PHPUnit\Framework\TestCase;
+
+class TestFileLocationProviderDefaultTest extends TestCase
+{
+    private TestFileLocationProviderDefault $class;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->class = new TestFileLocationProviderDefault();
+    }
+
+    /* TESTS */
+}
