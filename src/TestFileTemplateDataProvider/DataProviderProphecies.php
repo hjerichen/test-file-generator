@@ -66,17 +66,15 @@ class DataProviderProphecies implements DataProvider
 
     private function getTypeFullName(ReflectionParameter $parameter): string
     {
-        if (!($parameter->getType() instanceof ReflectionNamedType)) {
-            return '';
-        }
+        if (!($parameter->getType() instanceof ReflectionNamedType)) return '';
+
         return $parameter->getType()->getName();
     }
 
     private function getTypeShortName(ReflectionParameter $parameter): string
     {
-        if (!($parameter->getType() instanceof ReflectionNamedType)) {
-            return '';
-        }
+        if (!($parameter->getType() instanceof ReflectionNamedType)) return '';
+
         $explodedType = explode(separator: '\\', string: $parameter->getType()->getName());
         return array_reverse($explodedType)[0];
     }
