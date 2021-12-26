@@ -37,10 +37,10 @@ class TestFileGeneratorIntegrationTest extends TestCase
 
     public function testForSimpleClass(): void
     {
-        $classFile = __DIR__ . "/../../src/TestFileLocationProvider/TestFileLocationProviderDefault.php";
+        $classFile = __DIR__ . "/../../src/TestFileGenerator.php";
         $this->testFileGenerator->execute($classFile);
 
-        $actual = "{$this->getTempDirectoryForTest()}/TestFileLocationProviderDefaultTest.php";
+        $actual = "{$this->getTempDirectoryForTest()}/TestFileGeneratorTest.php";
         $expected = "{$this->getHelperDirectory()}/expected.txt";
         $this->assertFileEquals($expected, $actual);
     }

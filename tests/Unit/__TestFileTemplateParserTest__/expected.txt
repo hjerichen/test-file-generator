@@ -3,15 +3,19 @@
 namespace {namespace};
 
 use {className};
+{prophecyUses}
 use {testCaseClassName};
 
 class {classNameShort}Test extends TestCase
 {
     private {classNameShort} $class;
+    {prophecyProperties}
 
     protected function setUp(): void
     {
         parent::setUp();
+        {prophecyInitialize}
+
         $this->class = new {classNameShort}();
     }
 

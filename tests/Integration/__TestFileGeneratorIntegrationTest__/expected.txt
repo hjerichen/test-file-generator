@@ -1,18 +1,35 @@
 <?php declare(strict_types=1);
 
-namespace HJerichen\TestFileGenerator\Test\Unit\TestFileLocationProvider;
+namespace HJerichen\TestFileGenerator\Test\Unit;
 
-use HJerichen\TestFileGenerator\TestFileLocationProvider\TestFileLocationProviderDefault;
+use HJerichen\TestFileGenerator\TestFileGenerator;
+use HJerichen\TestFileGenerator\TestFileLocationProvider\TestFileLocationProvider;
+use HJerichen\TestFileGenerator\TestFileTemplateParser;
+use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderComposite;
+use HJerichen\TestFileGenerator\ClassForFileLoader;
+use HJerichen\TestFileGenerator\TestFileWriter\TestFileWriter;
+use Prophecy\Prophecy\ObjectProphecy;
 use PHPUnit\Framework\TestCase;
 
-class TestFileLocationProviderDefaultTest extends TestCase
+class TestFileGeneratorTest extends TestCase
 {
-    private TestFileLocationProviderDefault $class;
+    private TestFileGenerator $class;
+    private ObjectProphecy $testFileLocationProvider;
+    private ObjectProphecy $testFileTemplateParser;
+    private ObjectProphecy $dataProvider;
+    private ObjectProphecy $classForFileLoader;
+    private ObjectProphecy $testFileWriter;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->class = new TestFileLocationProviderDefault();
+        $this->testFileLocationProvider = $this->prophesize(TestFileLocationProvider::class);
+        $this->testFileTemplateParser = $this->prophesize(TestFileTemplateParser::class);
+        $this->dataProvider = $this->prophesize(DataProviderComposite::class);
+        $this->classForFileLoader = $this->prophesize(ClassForFileLoader::class);
+        $this->testFileWriter = $this->prophesize(TestFileWriter::class);
+
+        $this->class = new TestFileGenerator();
     }
 
     /* TESTS */

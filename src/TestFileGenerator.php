@@ -9,6 +9,7 @@ use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProvider;
 use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderClass;
 use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderComposite;
 use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderNamespace;
+use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderProphecies;
 use HJerichen\TestFileGenerator\TestFileTemplateDataProvider\DataProviderTestCase;
 use HJerichen\TestFileGenerator\TestFileWriter\TestFileWriter;
 use HJerichen\TestFileGenerator\TestFileWriter\TestFileWriterDefault;
@@ -46,6 +47,7 @@ class TestFileGenerator
             $this->dataProvider[] = new DataProviderClass();
             $this->dataProvider[] = new DataProviderTestCase();
             $this->dataProvider[] = new DataProviderNamespace();
+            $this->dataProvider[] = new DataProviderProphecies();
         }
     }
 
